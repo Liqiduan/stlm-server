@@ -13,7 +13,8 @@ interface SftpReq {
 
 interface SftpResp {
 	id?:Id,
-	list:string[]
+	list?:string[]
+	text?:string
 }
 
 interface ServiceOptions {}
@@ -46,6 +47,10 @@ export class Sftp implements ServiceMethods<SftpReq | SftpResp> {
 		this.client.on('ready', () => {
 			this.client.sftp((err, sftp) => {
 				if (err) throw err;
+
+				sftp.stat(data.path, (err, stats) => {
+					console.log(stats);
+				});
 
 				sftp.readdir(data.path, (err, list) => {
 					if (err) throw err;
