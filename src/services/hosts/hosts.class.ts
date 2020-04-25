@@ -1,14 +1,8 @@
 import { Service, NedbServiceOptions } from 'feathers-nedb';
 import { Application } from '../../declarations';
+import {Host} from '../../types/HostType';
 
-interface HostsType {
-	name: string,
-	host: string,
-	username: string,
-	password: string
-}
-
-export class Hosts extends Service<HostsType> {
+export class Hosts extends Service<Host> {
   constructor(options: Partial<NedbServiceOptions>, app: Application) {
     super(options);
   }
