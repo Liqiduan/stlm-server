@@ -5,6 +5,8 @@ export interface Host {
 	name: string,
 	host: string,
 	username: string,
-	password: string
+	password: string,
+
+  isActivated?: boolean
 }
 
